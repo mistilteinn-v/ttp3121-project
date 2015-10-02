@@ -151,7 +151,6 @@ void downloadFile(int sockfd){	//Client download file from Server
 		while ((token = strtok(s, "\n")) != NULL) {
 	        s = NULL;
 		cout = 1;
-		printf("Token:%s\n", token);
 		strcat(token,"\n");
     
 			if (strcmp(token,selectFile) ==0)
@@ -383,15 +382,15 @@ int main(int argc, char *argv[])	//Main function, starts with hostname and port 
     serv_addr.sin_port = htons(portno);
     if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0) 
         error("ERROR connecting");
-    printf("\n\nYou are connected to the Server!");
+    printf("\n\nWelcome! You are now connected to the Server!");
 
 	if(1)
 {
     int count = 0;
     while(count == 0){	//Getting Client's choice
 	int proceed = 0;
-	printf("\n\n1.Create a new File. \n2.Download file. \n3.Send file to server. \n4.Delete file. \n5.Terminate connection.");
-	printf("\nPlease enter your choice: ");
+	printf("\nPlease proceed with selection:\n1.Create a new File. \n2.Download a file. \n3.Send file to server. \n4.Delete a file. \n5.Terminate connection.");
+	printf("\nEnter: ");
 	bzero(buffer,256);
 	fgets(buffer,255,stdin);
     char input[256];

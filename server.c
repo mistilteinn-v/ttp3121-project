@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) /* Main function for receiving connection from 
 	
 
      listen(sockfd,5);
-     printf("\nThe server is listening at port :%d\n",portno);
+     printf("\nServer is listening at port :%d\n",portno);
      clilen = sizeof(cli_addr);
      while (1) {newsockfd = accept(sockfd, (struct sockaddr *) &cli_addr, &clilen); //receiving multiple connection
          if (newsockfd < 0) 
@@ -63,7 +63,7 @@ int main(int argc, char *argv[]) /* Main function for receiving connection from 
              error("ERROR on fork");
          if (pid == 0)  {
              close(sockfd);
-	printf("\nNew connection established from %s,with socket %d\n", inet_ntoa(cli_addr.sin_addr), sockfd);
+	printf("\nA client has established a connection from %s with socket %d\n", inet_ntoa(cli_addr.sin_addr), sockfd);
              conn(newsockfd);
              exit(0);
          }
@@ -76,7 +76,7 @@ int main(int argc, char *argv[]) /* Main function for receiving connection from 
 
 void conn (int sock) //this function is responsible to handle all of the separated communication for each for the connection that is established from client.
 {
-   printf("A client has connected to the Server.\n");
+   printf("Client connected\n");
    int count = 0;
    int buflen;
    while(count == 0){
